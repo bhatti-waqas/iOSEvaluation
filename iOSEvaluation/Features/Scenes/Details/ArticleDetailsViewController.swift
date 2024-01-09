@@ -33,7 +33,8 @@ private extension ArticleDetailsViewController {
         title = viewModel.screenTitle
         ui.titleLabel.text = viewModel.title
         ui.authorLabel.text = viewModel.byline
+        ui.abstractLabel.text = viewModel.abstract
         ui.publishedDateLabel.text = viewModel.publishedDate
-        ui.imageView.setImage(with: viewModel.mediumThreeByTwo440Thumbnail)
+        ui.posterImageView.setImage(with: viewModel.mediumThreeByTwo440Thumbnail)
     }
 }

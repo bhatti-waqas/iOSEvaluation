@@ -37,7 +37,7 @@ final class ArticleCell: UITableViewCell {
         return label
     }()
     
-    private lazy var profileImageView: UIImageView = {
+    private lazy var thumbnailImageView: UIImageView = {
         let imgView = UIImageView()
         imgView.contentMode = .scaleAspectFit
         imgView.layer.cornerRadius = 50
@@ -60,27 +60,27 @@ final class ArticleCell: UITableViewCell {
         titleLabel.text = article.title
         authorLabel.text = article.byline
         publishedDateLabel.text = article.publishedDate
-        profileImageView.setImage(with: article.standardThumbnail)
+        thumbnailImageView.setImage(with: article.standardThumbnail)
     }
 }
 // MARK: - Private Methods
 private extension ArticleCell {
     
     func addSubViews() {
-        [profileImageView, verticalStack].forEach(contentView.addSubview)
+        [thumbnailImageView, verticalStack].forEach(contentView.addSubview)
         [titleLabel, authorLabel, publishedDateLabel].forEach(verticalStack.addArrangedSubview)
     }
     
     func setupConstraints() {
-        profileImageView.snp.makeConstraints { make in
+        thumbnailImageView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(5)
             make.centerY.equalToSuperview()
-            make.width.equalTo(profileImageView.snp.height)
+            make.width.equalTo(thumbnailImageView.snp.height)
             make.height.equalTo(100)
         }
         
         verticalStack.snp.makeConstraints { make in
-            make.leading.equalTo(profileImageView.snp.trailing).offset(5)
+            make.leading.equalTo(thumbnailImageView.snp.trailing).offset(5)
             make.trailing.equalToSuperview()
             make.top.bottom.equalToSuperview().inset(10)
         }
