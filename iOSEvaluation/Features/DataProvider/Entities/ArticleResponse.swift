@@ -2,7 +2,7 @@
 //  ArticleResponse.swift
 //  iOSEvaluation
 //
-//  Created by Waqas Naseem on 14/10/2023.
+//  Created by Waqas Naseem on 09/01/2024.
 //
 
 struct ArticleResponse: Decodable {

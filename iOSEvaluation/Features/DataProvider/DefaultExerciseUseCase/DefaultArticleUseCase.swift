@@ -18,9 +18,12 @@ final class DefaultArticleUseCase {
 // MARK: - Currency Use-case implementation
 extension DefaultArticleUseCase: ArticleUseCase {
     
-    /// will fetch from cache first
-    /// in order to provide offline support and caching
     func fetchArticles() async throws -> [Article] {
-        try await networkService.request(with: .articles())
+        do {
+            let articleResponse: ArticleResponse = try await networkService.request(with: .articles())
+            return articleResponse.results
+        } catch {
+            throw error
+        }
     }
 }
