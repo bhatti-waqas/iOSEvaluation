@@ -2,7 +2,7 @@
 //  UIImageView.swift
 //  iOSEvaluation
 //
-//  Created by Waqas Naseem on 24/09/2023.
+//  Created by Waqas Naseem on 09/01/2024.
 //
 
 import SDWebImage

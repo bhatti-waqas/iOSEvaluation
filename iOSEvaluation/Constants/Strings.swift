@@ -2,7 +2,7 @@
 //  Strings.swift
 //  iOSEvaluation
 //
-//  Created by Waqas Naseem on 30/08/2023.
+//  Created by Waqas Naseem on 09/01/2024.
 //
 
 import Foundation
