@@ -10,22 +10,43 @@ import DesignSystem
 
 final class ArticleCell: UITableViewCell {
     
-    private lazy var containerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = IOSColor.grey.color(opacity: 1)
-        return view
+    private lazy var verticalStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        return stack
     }()
     
-    private lazy var nameLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(.avenirDemiBold, size: .standard(.h3))
+        label.font = UIFont(.avenirDemiBold, size: .standard(.h2))
+        label.numberOfLines = 2
+        return label
+    }()
+    
+    private lazy var authorLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(.avenirRegular, size: .standard(.h3))
+        label.numberOfLines = 2
+        return label
+    }()
+    
+    private lazy var horizontalStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.spacing = 20
+        return stack
+    }()
+    
+    private lazy var publishedDateLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(.avenirDemiBold, size: .standard(.h4))
         return label
     }()
     
     private lazy var profileImageView: UIImageView = {
         let imgView = UIImageView()
         imgView.contentMode = .scaleAspectFit
-        imgView.layer.cornerRadius = 20
+        imgView.layer.cornerRadius = 50
         imgView.layer.masksToBounds = true
         return imgView
     }()
@@ -42,31 +63,36 @@ final class ArticleCell: UITableViewCell {
     }
     
     func configure(with article: ArticleRowViewModel) {
-        nameLabel.text = article.title
-        //profileImageView.setImage(with: character.imageUrl)
+        titleLabel.text = article.title
+        authorLabel.text = article.byline
+        publishedDateLabel.text = article.publishedDate
+        profileImageView.setImage(with: article.articleUrl)
     }
 }
 // MARK: - Private Methods
 private extension ArticleCell {
     
     func addSubViews() {
-        contentView.addSubview(containerView)
-        [profileImageView, nameLabel].forEach(containerView.addSubview)
+        [profileImageView, verticalStack].forEach(contentView.addSubview)
+        [titleLabel, authorLabel, publishedDateLabel].forEach(verticalStack.addArrangedSubview)
     }
     
     func setupConstraints() {
-        containerView.snp.makeConstraints { make in
-            make.leading.trailing.top.bottom.equalToSuperview().inset(10)
-        }
-        
         profileImageView.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview().inset(10)
+            make.leading.equalToSuperview().offset(10)
+            make.centerY.equalToSuperview()
             make.width.equalTo(profileImageView.snp.height)
+            make.height.equalTo(100)
         }
         
-        nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(profileImageView.snp.bottom).offset(10)
-            make.leading.trailing.bottom.equalToSuperview().inset(10)
+        titleLabel.snp.makeConstraints { make in
+            make.leading.trailing.top.equalToSuperview()
+        }
+        
+        verticalStack.snp.makeConstraints { make in
+            make.leading.equalTo(profileImageView.snp.trailing).offset(10)
+            make.trailing.equalToSuperview()
+            make.top.bottom.equalToSuperview().inset(10)
         }
     }
 }

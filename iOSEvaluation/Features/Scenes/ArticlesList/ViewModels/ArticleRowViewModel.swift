@@ -20,6 +20,7 @@ struct ArticleRowViewModel: Hashable {
     let type: String
     let title: String
     let abstract: String
+    private let media: [Media]
     
     init(article: Article) {
         self.id = article.id
@@ -34,5 +35,11 @@ struct ArticleRowViewModel: Hashable {
         self.type = article.type
         self.title = article.title
         self.abstract = article.abstract
+        self.media = article.media
+    }
+    
+    var articleUrl: URL? {
+        guard let urlString = media.first?.metaData?.url else { return nil }
+        return URL(string: urlString)
     }
 }
