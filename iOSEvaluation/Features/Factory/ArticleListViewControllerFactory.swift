@@ -16,9 +16,9 @@ final class ArticleListViewControllerFactory {
         self.articleUseCase = articleUseCase
     }
     
-    func makeArticleListViewController(with navigator: ArticlesNavigator) -> UIViewController {
-        let controller = UIViewController()
-        controller.view.backgroundColor = .white
-        return controller
+    func makeArticleListViewController(with navigator: ArticlesNavigator) -> ArticleListViewController {
+        let viewModel = ArticleListViewModel(articleUseCase: articleUseCase, navigator: navigator)
+        let listViewController = ArticleListViewController(with: viewModel)
+        return listViewController
     }
 }
