@@ -43,9 +43,23 @@ final class ArticleDetailsUI {
         return label
     }()
     
+    private lazy var horizontailStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.spacing = 5
+        return stack
+    }()
+    
+    lazy var publishedDateTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = StringKey.Generic.publishedDateTitle.get()
+        label.font = UIFont(.avenirDemiBold, size: .standard(.h4))
+        return label
+    }()
+    
     lazy var publishedDateLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(.avenirDemiBold, size: .standard(.h4))
+        label.font = UIFont(.avenirRegular, size: .standard(.h4))
         return label
     }()
     
@@ -61,7 +75,8 @@ private extension ArticleDetailsUI {
     
     func addSubViews(in viewController: UIViewController) {
         viewController.view.addSubview(verticalStack)
-        [posterImageView, titleLabel, authorLabel, abstractLabel, publishedDateLabel].forEach(verticalStack.addArrangedSubview)
+        [posterImageView, titleLabel, authorLabel, abstractLabel, horizontailStack].forEach(verticalStack.addArrangedSubview)
+        [publishedDateTitleLabel, publishedDateLabel, UIView()].forEach(horizontailStack.addArrangedSubview)
     }
     
     func setupConstraints() {
