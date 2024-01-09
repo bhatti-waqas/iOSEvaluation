@@ -13,6 +13,7 @@ final class ArticleCell: UITableViewCell {
     private lazy var verticalStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
+        stack.spacing = 5
         return stack
     }()
     
@@ -79,18 +80,14 @@ private extension ArticleCell {
     
     func setupConstraints() {
         profileImageView.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(10)
+            make.leading.equalToSuperview().offset(5)
             make.centerY.equalToSuperview()
             make.width.equalTo(profileImageView.snp.height)
             make.height.equalTo(100)
         }
         
-        titleLabel.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
-        }
-        
         verticalStack.snp.makeConstraints { make in
-            make.leading.equalTo(profileImageView.snp.trailing).offset(10)
+            make.leading.equalTo(profileImageView.snp.trailing).offset(5)
             make.trailing.equalToSuperview()
             make.top.bottom.equalToSuperview().inset(10)
         }
