@@ -38,8 +38,17 @@ struct ArticleRowViewModel: Hashable {
         self.media = article.media
     }
     
-    var articleUrl: URL? {
-        guard let urlString = media.first?.metaData?.url else { return nil }
-        return URL(string: urlString)
+    var standardThumbnail: URL? {
+        guard let standard = media.first?.mediaMetaData.first(where: { $0.format == "Standard Thumbnail" }) else { return nil }
+        return URL(string: standard.url)
+    }
+    
+    var mediumThreeByTwo440Thumbnail: URL? {
+        guard let medium = media.first?.mediaMetaData.first(where: { $0.format == "mediumThreeByTwo440" }) else { return nil }
+        return URL(string: medium.url)
+    }
+    
+    var screenTitle: String {
+        StringKey.Generic.detailsScreenTitle.get()
     }
 }

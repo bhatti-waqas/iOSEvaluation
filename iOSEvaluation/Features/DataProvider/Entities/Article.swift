@@ -51,8 +51,10 @@ struct Media: Decodable, Hashable {
 
 struct MediaMetaData: Decodable, Hashable {
     let url: String
+    let format: String
     
     enum CodingKeys: CodingKey {
         case url
+        case format
     }
 }

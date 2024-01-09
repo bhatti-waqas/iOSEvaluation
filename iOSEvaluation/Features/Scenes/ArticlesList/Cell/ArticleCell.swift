@@ -31,13 +31,6 @@ final class ArticleCell: UITableViewCell {
         return label
     }()
     
-    private lazy var horizontalStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.spacing = 20
-        return stack
-    }()
-    
     private lazy var publishedDateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(.avenirDemiBold, size: .standard(.h4))
@@ -67,7 +60,7 @@ final class ArticleCell: UITableViewCell {
         titleLabel.text = article.title
         authorLabel.text = article.byline
         publishedDateLabel.text = article.publishedDate
-        profileImageView.setImage(with: article.articleUrl)
+        profileImageView.setImage(with: article.standardThumbnail)
     }
 }
 // MARK: - Private Methods

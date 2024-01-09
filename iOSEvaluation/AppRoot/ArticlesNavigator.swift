@@ -6,5 +6,5 @@
 //
 
 protocol ArticlesNavigator {
-    func showDetails()
+    func showDetails(with viewModel: ArticleRowViewModel)
 }

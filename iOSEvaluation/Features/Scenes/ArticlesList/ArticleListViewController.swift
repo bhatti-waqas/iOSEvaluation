@@ -99,6 +99,6 @@ extension ArticleListViewController {
 // MARK: - UITableViewDelegate
 extension ArticleListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //viewModel.showDetails(at: indexPath.row)
+        viewModel.showDetails(at: indexPath.row)
     }
 }

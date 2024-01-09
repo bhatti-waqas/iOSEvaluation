@@ -9,7 +9,7 @@ import UIKit
 
 final class ArticleDetailsViewControllerFactory {
     
-    static func makeArticleDetailsViewController() -> UIViewController {
-        UIViewController()
+    static func makeArticleDetailsViewController(wit viewModel: ArticleRowViewModel) -> ArticleDetailsViewController {
+        ArticleDetailsViewController(with: viewModel)
     }
 }

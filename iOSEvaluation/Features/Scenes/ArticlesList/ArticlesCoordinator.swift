@@ -20,6 +20,8 @@ final class ArticlesCoordinator: BaseCoordinator<AppNavigationController> {
 
 // MARK: - Articles Navigator
 extension ArticlesCoordinator: ArticlesNavigator {
-    func showDetails() {
+    func showDetails(with viewModel: ArticleRowViewModel) {
+        let detailsViewController = ArticleDetailsViewControllerFactory.makeArticleDetailsViewController(wit: viewModel)
+        rootViewController.pushViewController(detailsViewController, animated: true)
     }
 }

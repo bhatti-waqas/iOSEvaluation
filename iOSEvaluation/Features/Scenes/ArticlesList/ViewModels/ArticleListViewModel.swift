@@ -36,6 +36,11 @@ final class ArticleListViewModel {
     func fetchArticlesTriggered() {
         fetchArticles()
     }
+    
+    func showDetails(at index: Int) {
+        let row = articleRowViewModels[index]
+        navigator.showDetails(with: row)
+    }
 }
 
 // MARK: - Private methods
