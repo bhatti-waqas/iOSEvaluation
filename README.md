@@ -25,11 +25,11 @@ This project uses Swift Package Manager [SPM](https://swift.org/package-manager/
 
 ## Functionality
 
-- List of Characters
+- List of Articles
 <br>
 <img src = "README Files/articles.png" width = 600>
 
-- Details of Character
+- Details of Article
 <br>
 <img src = "README Files/article-details.png" width = 600>
 
