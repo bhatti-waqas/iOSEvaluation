@@ -22,7 +22,7 @@ final class ArticleUseCaseTests: XCTestCase {
         super.tearDown()
     }
 
-    func testFetchCharacters_success() async throws {
+    func testFetchArticles_success() async throws {
         // Given
         let mockData = MockResponseBuilder.getMockArticlesData()
         mockNetworkService.result = .success(mockData)
@@ -32,12 +32,12 @@ final class ArticleUseCaseTests: XCTestCase {
         let articles = try await useCase.fetchArticles()
         
         // Then
-        // Verify characters are fetched from network service
+        // Verify Articles are fetched from network service
         XCTAssertTrue(mockNetworkService.requestCalled)
         XCTAssertNotNil(articles)
     }
     
-    func testFetchCharactersFailure() async throws {
+    func testFetchArticlesFailure() async throws {
         // Given
         struct ErrorMock: LocalizedError {
             var errorDescription: String? { "ErrorMock message description" }
@@ -50,11 +50,11 @@ final class ArticleUseCaseTests: XCTestCase {
         do {
             _ = try await useCase.fetchArticles()
             // This line should not be executed if the call fails
-            XCTFail("Fetching characters should fail but did not.")
+            XCTFail("Fetching articles should fail but did not.")
         } catch {
             // Then
             guard let error = error as? ErrorMock else {
-                return XCTFail("Fetching characters should fail but did not.")
+                return XCTFail("Fetching articles should fail but did not.")
             }
             XCTAssertEqual(error.localizedDescription, mockError.localizedDescription, "Received error should match the expected error.")
         }

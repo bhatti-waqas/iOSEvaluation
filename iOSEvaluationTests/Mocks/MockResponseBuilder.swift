@@ -1,6 +1,6 @@
 //
 //  MockResponseBuilder.swift
-//  KinzooMobileChallengeTests
+//  iOSEvaluationTests
 //
 //  Created by Waqas Naseem on 15/10/2023.
 //
@@ -20,7 +20,7 @@ final class MockResponseBuilder {
         }
     }
     
-    static func getMockCharactersResponseWithEmptyResults() -> ArticleResponse {
+    static func getMockArticleResponseWithEmptyResults() -> ArticleResponse {
         do {
             let path = Bundle(for: MockResponseBuilder.self).path(forResource: "articles_response_empty", ofType: "json")!
             let data = try Data(contentsOf: URL(fileURLWithPath: path))
