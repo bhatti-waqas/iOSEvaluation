@@ -19,13 +19,13 @@ final class ArticleListViewModel {
     
     private var fetchingTask: Task<Void, Never>?
     let articleUseCase: ArticleUseCase
-    let coordinator: ArticlesCoordinator
+    let coordinator: DetailCoordinator
     var articleRowViewModels: [ArticleRowViewModel] = []
     @Published private(set) var viewState: ListViewState = .idle
     
     let screenTitle = StringKey.Generic.listScreenTitle.get()
     
-    init(articleUseCase: ArticleUseCase, coordinator: ArticlesCoordinator) {
+    init(articleUseCase: ArticleUseCase, coordinator: DetailCoordinator) {
         self.articleUseCase = articleUseCase
         self.coordinator = coordinator
     }

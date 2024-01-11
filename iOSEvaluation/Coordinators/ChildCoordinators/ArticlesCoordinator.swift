@@ -7,6 +7,10 @@
 
 import Coordinator
 
+protocol DetailCoordinator {
+    func navigateToDetails(with viewModel: ArticleRowViewModel)
+}
+
 final class ArticlesCoordinator: BaseCoordinator<AppNavigationController> {
     
     override func start() {
@@ -14,6 +18,9 @@ final class ArticlesCoordinator: BaseCoordinator<AppNavigationController> {
         let listViewController = factory.makeArticleListViewController(with: self)
         rootViewController.pushViewController(listViewController, animated: true)
     }
+}
+
+extension ArticlesCoordinator: DetailCoordinator {
     
     func navigateToDetails(with viewModel: ArticleRowViewModel) {
         let detailCoordinator = ArticleDetailsCoordinator(detailRow: viewModel, rootViewController: rootViewController)

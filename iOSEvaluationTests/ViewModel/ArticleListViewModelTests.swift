@@ -14,7 +14,7 @@ final class ArticleListViewModelTests: XCTestCase {
     
     private var sut: ArticleListViewModel!
     private var mockUseCase: MockArticleUseCase!
-    private var mockNavigator: MockArticleNavigator!
+    private var mockCoordinator: MockArticlesCoordinator!
     
     private var cancel: Set<AnyCancellable>!
     
@@ -22,14 +22,14 @@ final class ArticleListViewModelTests: XCTestCase {
         super.setUp()
         cancel = Set()
         mockUseCase = MockArticleUseCase()
-        mockNavigator = MockArticleNavigator()
-        sut = ArticleListViewModel(articleUseCase: mockUseCase, navigator: mockNavigator)
+        mockCoordinator = MockArticlesCoordinator()
+        sut = ArticleListViewModel(articleUseCase: mockUseCase, coordinator: mockCoordinator)
     }
     
     override func tearDown() {
         sut = nil
         mockUseCase = nil
-        mockNavigator = nil
+        mockCoordinator = nil
         cancel = nil
         super.tearDown()
     }
@@ -96,6 +96,6 @@ final class ArticleListViewModelTests: XCTestCase {
         // When: Trigger the showArticleDetails method
         sut.showDetails(at: 0)
         
-        XCTExpect(toEventually: mockNavigator.showDetailsInvoked)
+        XCTExpect(toEventually: mockCoordinator.showDetailsInvoked)
     }
 }
