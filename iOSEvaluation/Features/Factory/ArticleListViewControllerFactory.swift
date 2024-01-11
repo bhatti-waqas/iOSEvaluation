@@ -16,8 +16,8 @@ final class ArticleListViewControllerFactory {
         self.articleUseCase = articleUseCase
     }
     
-    func makeArticleListViewController(with navigator: ArticlesNavigator) -> ArticleListViewController {
-        let viewModel = ArticleListViewModel(articleUseCase: articleUseCase, navigator: navigator)
+    func makeArticleListViewController(with coordinator: ArticlesCoordinator) -> ArticleListViewController {
+        let viewModel = ArticleListViewModel(articleUseCase: articleUseCase, coordinator: coordinator)
         let listViewController = ArticleListViewController(with: viewModel)
         return listViewController
     }

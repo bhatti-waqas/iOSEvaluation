@@ -16,12 +16,9 @@ final class ArticlesCoordinator: BaseCoordinator<AppNavigationController> {
         let listViewController = factory.makeArticleListViewController(with: self)
         rootViewController.pushViewController(listViewController, animated: true)
     }
-}
-
-// MARK: - Articles Navigator
-extension ArticlesCoordinator: ArticlesNavigator {
-    func showDetails(with viewModel: ArticleRowViewModel) {
-        let detailsViewController = ArticleDetailsViewControllerFactory.makeArticleDetailsViewController(wit: viewModel)
-        rootViewController.pushViewController(detailsViewController, animated: true)
+    
+    func navigateToDetails(with viewModel: ArticleRowViewModel) {
+        let detailCoordinator = ArticleDetailsCoordinator(detailRow: viewModel, rootViewController: rootViewController)
+        startChild(detailCoordinator)
     }
 }

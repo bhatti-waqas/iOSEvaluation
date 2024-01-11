@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Coordinator
 
 enum ListViewState: Equatable {
     case idle
@@ -18,15 +19,15 @@ final class ArticleListViewModel {
     
     private var fetchingTask: Task<Void, Never>?
     let articleUseCase: ArticleUseCase
-    let navigator: ArticlesNavigator
+    let coordinator: ArticlesCoordinator
     var articleRowViewModels: [ArticleRowViewModel] = []
     @Published private(set) var viewState: ListViewState = .idle
     
     let screenTitle = StringKey.Generic.listScreenTitle.get()
     
-    init(articleUseCase: ArticleUseCase, navigator: ArticlesNavigator) {
+    init(articleUseCase: ArticleUseCase, coordinator: ArticlesCoordinator) {
         self.articleUseCase = articleUseCase
-        self.navigator = navigator
+        self.coordinator = coordinator
     }
     
     deinit {
@@ -39,7 +40,7 @@ final class ArticleListViewModel {
     
     func showDetails(at index: Int) {
         let row = articleRowViewModels[index]
-        navigator.showDetails(with: row)
+        coordinator.navigateToDetails(with: row)
     }
 }
 
