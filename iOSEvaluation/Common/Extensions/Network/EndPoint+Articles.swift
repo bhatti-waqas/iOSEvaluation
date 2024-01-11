@@ -14,6 +14,9 @@ extension Endpoint {
     
     static func articles() -> Self {
         let queryParam = URLQueryItem(name: "api-key", value: "hft8I5L2D3FDXLTtP0KWZTAGJGbwVUiy")
-        return Endpoint(baseURL: baseUrl, path: "/svc/mostpopular/v2/mostviewed/all-sections/7.json", queryItems: [queryParam])
+        let path = "/svc/mostpopular/v2/mostviewed/all-sections/7.json"
+        return Endpoint(baseURL: baseUrl,
+                        path: path,
+                        queryItems: [queryParam])
     }
 }
